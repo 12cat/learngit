@@ -17,5 +17,11 @@ ls －ah 可查看到.git目录
 
 提价文件
 	git commit -m ‘备注’
+
+查看仓库状态
+	git status
+
+查看修改内容
+	git diff
 	
  
