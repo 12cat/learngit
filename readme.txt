@@ -1,3 +1,10 @@
+http://git.oschina.net/progit/
+
+http://www.liaoxuefeng.com/
+
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000
+
+
 创建文件夹 mkdir learngit
 进入文件夹 cd learngit
 显示当前目录 pwd
@@ -42,5 +49,9 @@ ls －ah 可查看到.git目录
 撤销暂存区的修改
 	git reset HEAD readme.txt
 
+删除版本库的文件
+	git rm test.txt
 
+恢复版本库的文件
+	git checkout —- test.txt
  
