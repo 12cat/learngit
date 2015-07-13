@@ -12,6 +12,8 @@ http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b0
 
 关联远程库：
 	git remote add origin git@server-name:path/repo-name.git
+	git clone git@github.com:12cat/learngit.git
+
 关联后，推送master分支
 	git push -u origin master
 	git push origin master
