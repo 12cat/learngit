@@ -9,8 +9,13 @@
 将目录变成Git可管理的仓库
 	git init
 	-Initialized empty Git repository in /Users/michael/learngit/.git/
+
 ls －ah 可查看到.git目录
-git add readme.txt
-git commit -m ‘备注’
+
+添加文件，可添加多个
+	git add readme.txt
+
+提价文件
+	git commit -m ‘备注’
 	
  
