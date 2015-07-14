@@ -18,6 +18,15 @@ http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b0
 	git push -u origin master
 	git push origin master
 
+在本地建立远程分支对应的分支
+	git checkout -b branch-name origin/branch-name
+
+更新最新远程库
+	git pull
+
+建立dev和origin/dev的链接
+	git branch --set-upstream dev origin/dev
+
 创建文件夹 mkdir learngit
 进入文件夹 cd learngit
 显示当前目录 pwd
@@ -104,3 +113,33 @@ ls －ah 可查看到.git目录
 
 回复并删除工作现场
 	git stash pop
+
+查看远程库信息
+	git remote
+	git remote -v
+
+创建标签
+	git tag v1.0
+	git tag v0.9 6224937 
+
+查看标签
+	git tag
+
+查看标签信息
+	git show v0.9
+
+创建带有说明的标签
+	git tag -a v0.1 -m '说明' 3628164
+	git tag -s v0.2 -m '说明' 3628164 [私有标签，PGP秘钥]
+
+删除标签
+	git tag -d v0.1
+	git push origin :refs/tags/v.01 [删除远程标签，先删除本地库]
+
+推送标签到远程
+	git push origin v1.0
+	git push origin --tags [推送所有标签]
+
+
+Git显示颜色
+	git config --global color.ui true
