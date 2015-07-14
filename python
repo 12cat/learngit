@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
+输出
+	print('hello,world!')
+	print('one','two','three')
+
+输入
+	name = input()
+	name = input('please enter your name: ')
+
+与，或，非
+	True and True
+	True or False
+	not True
+
+空值
+	None
+
+字符串
+	ord('中') 获取单个字符的编码
+	len('ABC') 字符串长度
+
+字符串替换
+	%d[整数] %f[浮点数] %s[字符串] %x[十进制整数]
+	>>>'Hello, %s' % 'world'
+	'Hello, world'
+	>>>'Hi, %s, you have $%d.' % ('Michael', 1000000)
+	'Hi, Michael, you have $1000000.'
+	>>>'%2d-%02d' % (3, 1)
+	' 3-01'
+	>>>'growth rate: %d %%' % 7
+	'growth rate: 7 %'
+
+列表list
+	list = [Michael', 'Jack', 'Bob', 'Tracy']
+	len(list)
+	list[0]
+	list[-1]
+	list.append('Adam') 添加元素至末尾
+	list.insert(1, 'Jack') 将元素插入到指定位置
+	list.pop() 删除末尾元素
+	list.pop(1) 删除指定元素
+
+元组
+	
