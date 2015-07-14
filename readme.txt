@@ -46,9 +46,10 @@ ls －ah 可查看到.git目录
 	git diff
 
 查看历史记录
-	git log
-	git log —pretty=oneline
-	git reflog
+	git log [查看历史记录]
+	git log —pretty=oneline [历史记录简略]
+	git log --graph --pretty=oneline --abbrev-commit [查看分支图]
+	git reflog [历史记录简略，带版本号]
 
 回到上一个版本
 	git reset —-hard HEAD^
@@ -85,4 +86,5 @@ ls －ah 可查看到.git目录
 
 删除分支
 	git branch -d dev
+
 
