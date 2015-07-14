@@ -67,4 +67,11 @@ ls －ah 可查看到.git目录
 
 恢复版本库的文件
 	git checkout —- test.txt
- 
+
+创建并切换分支
+	git checkout -b dev
+	git branch dev
+	git checkout dev
+
+查看当前分支
+	git branch
