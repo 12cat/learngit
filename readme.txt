@@ -25,7 +25,7 @@ http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b0
 创建文件 vi/vim readme.txt
 	xxx
 	按ESC
-	:wq
+	:wq!
 
 将目录变成Git可管理的仓库
 	git init
