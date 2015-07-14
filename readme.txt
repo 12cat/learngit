@@ -88,4 +88,18 @@ ls －ah 可查看到.git目录
 删除分支
 	git branch -d dev
 
+保存当前工作现场
+	git stash
 
+查看工作现场
+	git stash list
+
+回复工作现场
+	git stash apply
+	git stash apply stash@{0}
+
+删除工作现场
+	git stash drop
+
+回复并删除工作现场
+	git stash pop
