@@ -70,8 +70,18 @@ ls －ah 可查看到.git目录
 
 创建并切换分支
 	git checkout -b dev
+
+创建分支
 	git branch dev
+
+切换分支
 	git checkout dev
 
 查看当前分支
 	git branch
+
+合并分支到当前分支
+	git merge dev
+
+删除分支
+	git branch -d dev
