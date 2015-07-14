@@ -87,6 +87,7 @@ ls －ah 可查看到.git目录
 
 删除分支
 	git branch -d dev
+	git branch -D dev
 
 保存当前工作现场
 	git stash
