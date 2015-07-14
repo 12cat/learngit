@@ -83,6 +83,7 @@ ls －ah 可查看到.git目录
 
 合并分支到当前分支
 	git merge dev
+	git git merge --no-ff -m 'merge with no-ff' dev
 
 删除分支
 	git branch -d dev
