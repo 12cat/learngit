@@ -21,6 +21,9 @@
 字符串
 	ord('中') 获取单个字符的编码
 	len('ABC') 字符串长度
+	int(str) 字符串转换为整数，非法报错
+	a = 'abc'	
+	str.replace('a', 'A') 字符串替换
 
 字符串替换
 	%d[整数] %f[浮点数] %s[字符串] %x[十进制整数]
@@ -34,7 +37,7 @@
 	'growth rate: 7 %'
 
 列表list
-	list = [Michael', 'Jack', 'Bob', 'Tracy']
+	list = ['Michael', 'Jack', 'Bob', 'Tracy']
 	len(list)
 	list[0]
 	list[-1]
@@ -42,6 +45,43 @@
 	list.insert(1, 'Jack') 将元素插入到指定位置
 	list.pop() 删除末尾元素
 	list.pop(1) 删除指定元素
+	list.sort() 列表排序
 
-元组
-	
+元组tuple
+	tuple = (0,)
+	tuple = ('Michael', 'Jack', 'Bob', 'Tracy')
+	元组值不可改变，不可增减
+
+条件判断
+	if age >= 19:
+		print(1)
+	elif age >=30:
+		print(2)
+	else:
+		print(0)
+
+循环
+	names = ['Michael', 'Bob', 'Tracy']
+	for name in names:
+		print(name)
+	for x in range(101):
+		sum = sum + x
+	sum = 0
+	while n > 0:
+		sum = sum + 1
+
+键值对dict
+	dict = {'Michael': 95, 'Bob': 75, 'Rracy': 85}
+	dict['Michael']
+	'Michael' in dict 判断key是否存在
+	dict.get('Michael') 不存在返回None
+	dict.get('Michael', -1) 不存在返回-1
+	dict.pop(key) 删除key和对应的value
+
+set和dict相似，但只有key
+	s = set([1,2,3])
+	set是无序的，不重复的,值不能是list
+	s.add(4) 添加元素
+	s.remove(4) 删除元素
+
+
