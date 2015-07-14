@@ -85,3 +85,4 @@ ls －ah 可查看到.git目录
 
 删除分支
 	git branch -d dev
+s
