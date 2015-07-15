@@ -87,4 +87,20 @@ set和dict相似，但只有key
 	s.add(4) 添加元素
 	s.remove(4) 删除元素
 
+函数
+	def nop():
+		pass
+	def my_abs(x):
+		if x >= 0:
+			return x
+		else:
+			return -x
+
+
+
+
+
+方法
+	isinstance(x, (int, float)) 检查数据类型
+	raise TypeError('bad operand type') 抛出错误
 
