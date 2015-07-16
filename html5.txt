@@ -54,7 +54,67 @@
 		console.log(e);
 	},true);
 
-
-
-
+离线应用
+	# 检查是否支持离线
+	if(window.applicationCache){
+		// 浏览器支持离线应用
+	}
+	# 离线应用的用法
+	<!DOCTYPE html>
+	<html manifest="cache.manifest">
+	# Tomcat下的配置
+	conf/web.xml文件中配置:mime-mapping加代码
+	<mime-mapping>
+		<extension>manifest</extension>
+		<mime-type>text/cache-manifest</mime-type>
+	</mime-mapping>
+	# cache.manifest文件
+	CACHE MANIFEST
+	#缓存文件
+	index.html
+	test.js
+	NETWORK
+	#不作缓存文件
+	/iamges/
+	FALLBACK
+	#前面的文件无法获取，则请求转发后面的文件
+	offline.html	index.html
+	# 检查是否在线
+	if(window.navigator.onLine){
+		// 当前浏览器online
+	} else {
+		// 当前浏览器offline
+	}
+	# 缓存状态
+	window.applicationCache.status // 获取缓存状态
+	interface ApplicationCache : EventTarget{
+		const unsigned short UNCACHED = 0;	// 未缓存
+		const unsigned short IDLE = 1;		// 空闲状态
+		const unsigned short CHECKING = 2;	// 检查中
+		const unsigned short DOWNLOADING = 3;	// 下载中
+		const unsigned short UPDATEREADY = 4;	// 更新准备中
+		const unsigned short OBSOLETE = 5;	// 过期状态
+		readonly attribute unsigned short status;
+	}
+	# applicationCache对象事件表
+	Checking	# 当user agent检查更新时，或第一次下载manifest清单时，它
+			  往往会是第一个被触发的事件
+	Noupdate	# 当检查到manifest中清单文件不需要更新时，触发该事件
+	downloading	# 第一次下载或更新manifest清单文件时，触发该事件
+	Progress	# 该事件与downloading类似，但downloading事件只触发一次，
+			  progress事件则在清单文件下载过程中周期性触发
+	Cached		# 当manifest清单文件下载完毕及成功缓存后，触发该事件
+	upadateready	# 此事件的含义表示缓存清单文件已经下载完毕，可通过重新加
+			  载页面读取缓存文件活通过方法swapCache()切换到新的缓存
+			  文件，常用于本地缓存更新版本后的提示
+	Obsolete	# 加入访问manifest缓存文件返回HTTP404错误活401错误（永久
+			  消失）时，触发该事件
+	Error		# 若要达到触发该事件，需要满足以下几种情况之一
+			  已经触发obsolete事件
+			  manifest文件没有改变，但缓存文件中存在文件下载失败
+			  获取manifest资源文件时发生致命错误
+			  当更新本地缓存时，manifest文件再次被更改
+	applicationCache.addEventListener('updateready',function(){
+		// 资源文件下载中，可以在此部分增加业务功能
+	}
 
