@@ -23,11 +23,11 @@ http://127.0.0.1:8080/f_org_acc
 	None
 
 字符串
-	ord('中') 获取单个字符的编码
-	len('ABC') 字符串长度
-	int(str) 字符串转换为整数，非法报错
-	a = 'abc'	
-	str.replace('a', 'A') 字符串替换
+	ord('中')	获取单个字符的编码
+	len('ABC')	字符串长度
+	int(str)	字符串转换为整数，非法报错
+	a = 'abc'
+	str.replace('a', 'A')	字符串替换
 
 字符串替换
 	%d[整数] %f[浮点数] %s[字符串] %x[十进制整数]
@@ -45,11 +45,11 @@ http://127.0.0.1:8080/f_org_acc
 	len(list)
 	list[0]
 	list[-1]
-	list.append('Adam') 添加元素至末尾
-	list.insert(1, 'Jack') 将元素插入到指定位置
-	list.pop() 删除末尾元素
-	list.pop(1) 删除指定元素
-	list.sort() 列表排序
+	list.append('Adam')	添加元素至末尾
+	list.insert(1, 'Jack')	将元素插入到指定位置
+	list.pop()		删除末尾元素
+	list.pop(1)		删除指定元素
+	list.sort()		列表排序
 
 元组tuple
 	tuple = (0,)
@@ -77,25 +77,53 @@ http://127.0.0.1:8080/f_org_acc
 键值对dict
 	dict = {'Michael': 95, 'Bob': 75, 'Rracy': 85}
 	dict['Michael']
-	'Michael' in dict 判断key是否存在
-	dict.get('Michael') 不存在返回None
-	dict.get('Michael', -1) 不存在返回-1
-	dict.pop(key) 删除key和对应的value
+	'Michael' in dict	判断key是否存在
+	dict.get('Michael')	不存在返回None
+	dict.get('Michael', -1)	不存在返回-1
+	dict.pop(key)		删除key和对应的value
 
 set和dict相似，但只有key
 	s = set([1,2,3])
 	set是无序的，不重复的,值不能是list
-	s.add(4) 添加元素
-	s.remove(4) 删除元素
+	s.add(4)	添加元素
+	s.remove(4)	删除元素
 
 函数
-	def nop():
+	def nop():		# pass什么都不做
 		pass
 	def my_abs(x):
 		if x >= 0:
 			return x
 		else:
 			return -x
+	def my_abs(x=0):	# 默认参数
+		pass
+
+函数参数
+	def power(x):		# 必选参数
+		pass
+	def power(n=2):		# 默认参数，不写默认2
+		pass
+	nums = [1, 2, 3]	# 可变参数fun(*(1,2,3))
+	def power(*nums):
+		sum = 0
+		for n in nums:
+			sum = sum + n
+		return sum
+	# 命名关键字参数
+	def person(name, age, *, city='Beijing', job):
+		print(name, age, city, job)
+	person('Jack', 23, job='Engineer')
+	Jack 23 Beijing Engineer
+	# 关键字参数fun(**('a': 1, 'b': 2})
+        extra = {'city': 'Beijing', 'job': 'Engineer'
+        def person(name, age, **kw):
+                # 检查是否含有city参数 
+                if 'city' in kw: 
+                        pass
+                print('name:', name, 'age:', age, 'other:', kw)
+        person('Jack', 23, **extra)
+        name: Jack age: 23ther: {'city': 'Beijing', 'job': 'Engineer'}
 
 
 
