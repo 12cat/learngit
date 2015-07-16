@@ -1,0 +1,60 @@
+
+	audio		# 音频内容
+	video		# 视频内容
+	source		# 媒体资源
+	canvas		# 定义画布功能
+
+
+语义化元素标签
+	header		# 头部导航信息
+	footer		# 章节末尾部分
+	nav		# 导航链接
+	aside		# 页面区域，非正文类内容
+	article		# 内容主体，用来显示一块独立的文章内容
+	section		# 章节
+	hgroup		# 标题元素的组合，常包含h1-h6
+	command		# 定义一个命令按钮
+	datalist	# 定义一个下拉列表
+	details		# 定义一个元素的详细内容
+	dialog		# 定义一个对话框
+	keygen		# 定义表单里一个声称的键值
+	mark		# 定义有标记的文本
+	output		# 定义一些输出类型
+	progress	# 定义任务的过程
+
+本地存储
+	Web SQL Database	# 类似书库
+	Web Storage		# 键值对形式存储
+		sessionStorage	# 会话期间有效
+		localStorage	# 存储在本地
+	# 检查是否支持Web Storage
+	if(window.localStorage){
+		// 浏览器支持localStorage
+	}
+	if(window.sessionStorage){
+		// 浏览器支持sessionStorage
+	}
+	# localStorage/sessionStorage使用方法
+	// 存储
+	localStorage.setItem("name","非一般的黑客");
+	// 取
+	localStorage.getItem("name");
+	localStorage.key(1); // 1为第一个下标
+	// 删除，根据key
+	localStorage.removeItem("name");
+	// 删除所有键值对
+	localStorage.clear();
+	// 存储JSON格式的字符串
+        var userData = {name:"Sankyu Name", account:"sankyu", level:1};}
+        localStorage.setItem("userData",JSON.stringify(userData));
+	// 读取JSON格式内容
+	var newUserData = JSON.parse(localStorage.getItem("userData"));
+	// 监听storage
+	window.addEventListener("storage",function(e){
+		console.log(e);
+	},true);
+
+
+
+
+
