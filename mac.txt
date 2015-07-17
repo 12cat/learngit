@@ -1,3 +1,10 @@
+mkdir	创建目录
+cp -R/User/用户名/Desktop/Natit.txt	拷贝，-R表示递归
+rm -r/System/Library	删除文件
+mv /System/Library/...	移动文件
+
+
+
 cmd+C
 cmd+V
 cmd+Q
