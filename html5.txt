@@ -118,3 +118,17 @@
 		// 资源文件下载中，可以在此部分增加业务功能
 	}
 
+
+常见的HTML5表单元素
+	form让表单外的元素属于该表单
+		<form id="testform">
+			<input type="text"/>
+		</form>
+		<input form=testform />
+	placdholder输入提示
+		<input type="text" palceholder="请输入内容" />
+	autofocus自动获取焦点，同页面只能有一个
+		<input type="text" autofocus />
+	required必填项
+		<input type="text" required />
+	
