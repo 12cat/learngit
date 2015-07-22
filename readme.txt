@@ -17,7 +17,12 @@ http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b0
 第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：
 然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容
 
-关联远程库：
+
+将目录变成Git可管理的仓库
+        git init
+        -Initialized empty Git repository in /Users/michael/learngit/.git/
+
+本地库关联远程库：
 	git remote add origin git@server-name:path/repo-name.git
 	git clone git@github.com:12cat/learngit.git
 
@@ -43,9 +48,6 @@ http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b0
 	按ESC
 	:wq!
 
-将目录变成Git可管理的仓库
-	git init
-	-Initialized empty Git repository in /Users/michael/learngit/.git/
 
 ls －ah 可查看到.git目录
 
@@ -53,9 +55,9 @@ ls －ah 可查看到.git目录
 	git add readme.txt
 
 提价文件到版本库
-	git commit -m ‘备注’
+	git commit -m '备注'
 
-查看仓库状态
+查看库状态
 	git status
 
 查看修改内容
