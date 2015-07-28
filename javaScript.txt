@@ -1,0 +1,289 @@
+
+### JavaScript高级程序设计 ###
+
+数据类型
+	基本类型
+		Undefined
+		Null
+		Boolean
+		Number
+		String
+		Object
+	typeof检测变量的数据类型
+		alert(typeof str);	// string
+		alert(typeof(str));	// string
+		alert(typeof 99);	// number
+		undefined	未定义的变量或未赋值
+		boolean		布尔值
+		string		字符串
+		number		数值
+		object		对象或null
+		function	函数
+	Null
+		null == undefined // true
+	Boolean
+		var str = "Hello world!";
+		var strBoolean = Boolean(str); // 将str转换为boolean值
+		转换规则
+			转换类型	true值		false值
+			Boolean		true		false
+			string		非空字符串	""
+			Number		非零数字值	0和NaN
+			Object		任何对象	null
+			Undefined			nudefined
+	Number
+		八进制
+			var n = 070;	// 八进制的56
+			var n = 079;	// 无效的八进制，解析为79
+		十六进制
+			var n = 0xA;	// 十六进制的10;
+		浮点数
+			var n = 12.2	// 12.2
+			var n = .22;	// 0.22
+			var n = 1.;	// 1
+		无穷大
+			var n = Infinity;
+			var n = Number.MAX_VALUE;	// 正无穷
+			var m = -Infinity;
+			var m = Number.MIN_VALUE;	// 负无穷
+			判断是否在正无穷和负无穷之间
+				isFinite(n);	// false
+		NaN
+			任何无法返回数值的情况返回NaN
+			NaN和任何值都不相等（包括本身）
+			NaN做任何运算都返回NaN
+			判断NaN
+				isNaN(NaN);	// true
+				isNaN(10);	// false
+				isNaN("10");	// false可转换为10
+				isNaN("1s");	// true不能转换为数值
+				isNaN(true);	// false可转换为1
+		数值转换
+			Number()
+				Number(true);		// 1
+				Number(false);		// 0
+				Number(22);		// 22
+				Number(null);		// 0
+				Number(undefined);	// NaN
+				Number("0011");		// 11
+				Number("0011.1");	// 11.1
+				Number("0xf");		// 15
+				Number("");		// 0
+				Number(" 2b");		// NaN
+				
+			parseInt()
+				parseInt("  12b");	// 12
+				parseInt("b12");	// NaN
+				parseInt(" 23bd3);	// 23
+				parseInt("");		// NaN
+				parseInt("0xA");	// 10十六进制
+				parseInt(22.5);		// 22
+				parseInt(" 070");	// 67八进制
+				parseInt(" 0070");	// 70
+				parseInt("0xAF", 16);	// 175
+				parseInt("AF", 16);	// 175
+				parseInt("10", 2);	// 2二进制
+				parseInt("10", 8);	// 8八进制
+				parseInt("10", 10);	// 10十进制
+				parseInt("10", 16);	// 16十六进制
+			parseFloat()
+				同上
+	String
+		字符串是不可变的
+		转义字符
+			\n	换行
+			\t	制表
+			\b	空格
+			\r	回车
+			\f	进纸
+			\\	\
+			\'	单引号'
+			\"	双引号"
+			\xnn	特殊字符
+			\unnnn	特殊字符
+		转换为字符串
+			toString()
+				null和undefined没有toString()方法
+				var age = 11;
+				age.toString();		// "11"
+				var f = true;
+				age.toString();		// "true"
+				var n = 10;
+				n.toString();		// "10"
+				n.toString(2);		// "1010"二进制
+				n.toString(8);		// "12"八进制
+				n.toString(10);		// "10"十进制
+				n.toString(16);		// "a"十六进制
+			String()
+				如果有toString()方法就用toString()
+				null返回"null"
+				undefined返回"undefined"
+	Object
+		var o = new Object();
+		var o = new Object;
+		属性和方法
+			obj.constructor			// 创建当前对象的函数
+			obj.hasOwnProperty("name")	// 检查name属性是否在对象实例中
+			obj.isPrototypeOf(object)	// 检查对象原型
+			propertyIsEnumerable("name")	// name属性是否能用for-in语句枚举
+			toLocaleString()		// 返回对象的字符串表示，与执行环境的地区对应
+			toString()			// 返回对象的字符串表示
+			valueOf()			// 返回对象的字符串、数值或布尔值。通常同上
+操作符/运算符
+	++,--
+		"2"++ = 2++
+		"3b"++ = NaN
+		false++ = 0++
+		true++ = 1++
+		12.1++ = 13.1
+		obj++ = obj.valueOf()++ && obj.toString()++;
+	+,-
+		-"01" = -1
+		+"1.1" = 1.1
+		-"b2" = NaN
+		-false = -0
+		+true = +1
+		-obj = -obj.valueOf() && -obj.toString();
+	~按位非
+		var num1 = 25;		// 二进制00000000000000000000000000011001
+		var num2 = ~num1;	// 二进制11111111111111111111111111100110 -26
+	&按位与
+		var result = 25 & 3;	// 1
+		25 = 0000 0000 0000 0000 0000 0000 0001 1001
+		 3 = 0000 0000 0000 0000 0000 0000 0000 0011
+		-----------------------------------------------
+		AND  0000 0000 0000 0000 0000 0000 0000 0001
+	|按位或
+		var result = 25 | 3;	// 27
+		25 = 0000 0000 0000 0000 0000 0000 0001 1001
+		 3 = 0000 0000 0000 0000 0000 0000 0000 0011
+		-----------------------------------------------
+		OR   0000 0000 0000 0000 0000 0000 0001 1011
+	^按位异或
+		var result = 25 ^ 3;	// 26
+		25 = 0000 0000 0000 0000 0000 0000 0001 1001
+                 3 = 0000 0000 0000 0000 0000 0000 0000 0011
+                -----------------------------------------------
+                OR   0000 0000 0000 0000 0000 0000 0001 1010
+	左移<<
+	右移>>
+	有符号右移>>>
+	!逻辑非
+		!obj		false
+		!""		true
+		!"abc"		false
+		!0		true
+		!12		false
+		!Infinity	false
+		!null		true
+		!NaN		true
+		!undefined	true
+	&&逻辑与
+		var s = a && b;
+		第一个是对象，则返回第二个
+		第二个是对象，则只有在第一个值为true时，才返回该对象
+		两个都是对象，则返回第二个
+		如果有一个是null，则返回null
+		如果有一个是NaN，则返回NaN
+		如果有一个是undefined，则返回undefined
+	||逻辑或
+		var s = a || b;
+		如果第一个是对象，则返回第一个
+		如果第一个值为false，则返回第二个
+		如果两个都是对象，则返回第一个
+		如果两个都是null，则返回null
+		如果两个都是NaN，则返回NaN
+		如果两个都是undefined，则返回nudefined
+	运算中
+		false		0
+		true		1
+		null		0
+		undefined	NaN
+		""		0
+		"bc"		NaN
+	相等
+		null == undefined	true
+		"NaN" == NaN		false
+		5 == NaN		false
+		NaN == NaN		false
+		NaN != NaN		true
+		false == 0		true
+		true == 1		true
+		true == 2		false
+		undefined == 0		false
+		null == 0		false
+		"5" = 5			true
+语句
+	if语句
+		if(expression){
+			...
+		} else if(expression){
+			...
+		} else {
+			...
+		}
+	do-while循环
+		do {
+			...
+		} while (expression);
+	while循环
+		while(expression){
+			...
+		}
+	for循环
+		for(var i=0; i<10; i++){
+			i++;
+		}
+	for-in循环
+		for(var i in arr){
+			i++;	// i是下标
+		}
+	label标签
+		out:
+		for(var i=0; i<10; i++){
+			for(var j=0; j<10; j++){
+				if(i==5 && j==5){
+					break out;
+					// continus out;
+				}
+			}
+		}
+	with语句
+		*已废
+		var qs = obj.qs;
+		var host = obj.host;
+		var url = obj.url;
+		with(obj){
+			var qs = qs;
+			var host = host;
+			var url = url;
+		}
+	switch语句
+		switch(i){
+			case 20:
+				console.log(20);
+				break;
+			case 30:
+				console.log(30);
+				 break;
+			default:
+				console.log(100);
+		}
+		var num = 25;
+		switch(true){
+			case num<0:
+				console.log("num<0");
+				break;
+			case num>=0 && num <=10:
+				console.log("0<=num<=10");
+				break;
+			default:
+				console.log("end");
+
+		}
+函数
+	函数参数
+		function f1(xxx){
+			arguments[0];		// 函数第一个参数
+			arguments.length;	// 传入参数个数
+		}
