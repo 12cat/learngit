@@ -10,15 +10,13 @@
 		String
 		Object
 	typeof检测变量的数据类型
-		alert(typeof str);	// string
-		alert(typeof(str));	// string
-		alert(typeof 99);	// number
-		undefined	未定义的变量或未赋值
-		boolean		布尔值
-		string		字符串
-		number		数值
-		object		对象或null
-		function	函数
+		typeof 2323s === "number"		// true
+		typeof NaN === "number"			// true
+		typeof "abc" === "string"		// true
+		typeof nudefined === "undefined"	// true
+		typeof true === "boolean"		// true
+		typeof null === "object"		// true
+		typeof fun1 === "function"		// true
 	Null
 		null == undefined // true
 	Boolean
@@ -291,3 +289,22 @@
 		}
 	检测对象
 		person instanceof Object	// true
+引用类型
+	Object类型
+		属性的访问
+			person.name
+			person['name']
+			person[5]/person['5']
+	Array数组
+		arr instanceof Array
+		Array.isArray(arr)
+
+
+
+
+
+
+
+
+
+
