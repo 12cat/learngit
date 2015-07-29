@@ -283,7 +283,11 @@
 		}
 函数
 	函数参数
-		function f1(xxx){
+		function f1(a, b){
 			arguments[0];		// 函数第一个参数
 			arguments.length;	// 传入参数个数
+			arguments[2];		// undefined
+			arguments[0] === a;	// true
 		}
+	检测对象
+		person instanceof Object	// true
