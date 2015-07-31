@@ -279,7 +279,17 @@
 				console.log("end");
 
 		}
-函数
+Function函数
+	函数也是对象
+	typeof sum	// "function"
+	函数的声明
+		function sum(num1, num2){
+			return num1 + num2;
+		}
+		var sum = function(num1, num2){
+			return num1 + num2;
+		};
+		var sum = new Function("num1", "num2", "return num1 + num2");
 	函数参数
 		function f1(a, b){
 			arguments[0];		// 函数第一个参数
@@ -287,8 +297,85 @@
 			arguments[2];		// undefined
 			arguments[0] === a;	// true
 		}
+	arguments.callee指向arguments对象的函数
+		// 函数的递归
+		function fa(num){
+			if(num <= 1){
+				return 1;
+			} else {
+				return num * arguments.callee(num-1);
+			}
+		}
+	caller调用当前函数的函数引用
+		ECMAScript5
+		function outer(){
+			inner();
+		}
+		function inner(){
+			alert(inner.caller);
+		}
+		outer();	// 这里弹出的是outter()函数的源代码
+	函数的属性和方法
+		length函数希望接收的命名参数的个数
+			function f1(name){
+				console.log(name);
+			}
+			function f2(a, b){
+				return a+b;
+			}
+			f1.length	// 1
+			f2.length	// 2
+		pototype
+			pototype不可枚举，for-in无法使用
+		apply()
+			function sum(a, b){
+				return a+b;
+			}
+			functon fun1(a, b){
+				return sum.apply(this, arguments);
+			}
+			functon fun2(a, b){
+				return sum.apply(this, [a, b]);
+			}
+			fun1(5, 6)	// 11
+			fun2(5, 6)	// 11
+		call()
+			function sum(a, b){
+				return a+b;
+			}
+			function fun(a, b){
+				return sum.call(this, a, b);
+			}
+			fun(5, 6)	// 11
+
+			call()和apply()仅仅是传参时有区别
+			// 这个例子适用于他们两个
+			window.color = "red";
+			var o = { color: "blue" };
+			function sayColor(){
+				console.log(this.color);
+			}
+			sayColor()		// red
+			sayColor.call(this)	// red
+			sayColor.call(window)	// red
+			sayColor.call(o)	// blue
+		bind()
+			ECMAScript5
+			IE9+,Firefox4+,Safari5.1+,Opera12+,Chrome
+			创建函数实例，并绑定this值
+			window.color = "red";
+			var o = { color: "blue" };
+			function sayColor(){
+				console.log(this.color);
+			}
+			var objectSayColor = sayColor.bind(o);
+			objectSayColor()	// blue
+
+对象
 	检测对象
 		person instanceof Object	// true
+	
+
 引用类型
 	Object类型
 		属性的访问
@@ -418,4 +505,24 @@
 		toString()		// 因浏览器差异
 		valueOf()返回的是日期的毫秒数
 			date1 < date2		// true
+	正则表达式
+		模式
+			g	全局模式
+			i	不区分大小写
+			m	多行模式
+		元字符
+			( [ { \ ^ $ | ) ? * + . ] }
+		实例
+			var re1 = /[bc]at/i;			// 转移
+			var re2 = new RegExp("[bc]at", "i");	// 要双转义
+			var t = re.test("catastrophe");
+				t	// true | false
+			var t = re.exec("sdcatsdffatdsftat");
+				t		// ["cat"]
+				t.index		// 2，匹配值的位置
+				t[0]		// "cat"
+				re.lastIndex	// 5，下次匹配开始下标，非全局模式一直是0
+				非全局模式每次都重新匹配
+				全局模式继续上一次匹配下标开始重新匹配，到终点返回一次null
+			正则表达式的valueOf()方法返回正则表达式本身
 
