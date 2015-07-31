@@ -370,11 +370,55 @@ Function函数
 			}
 			var objectSayColor = sayColor.bind(o);
 			objectSayColor()	// blue
-
 对象
 	检测对象
 		person instanceof Object	// true
 	
+基本包装类
+		var value = "23";
+		var number = Number(value);	// 转型函数
+		typeof number			// "number"
+		var obj = new Number(value);	// 构造函数
+		typeof obj			// "object"
+	Number
+		四舍五入，IE9+
+			var num = 10.005;
+			num.toFixed(2)		// "10.01"
+		指数表示法
+			var num = 10;
+			num.toExponential(1)	// "1.0e+1"
+
+			var n = 99;
+			num.toPrecision(1)	// "1e+2"
+			num.toPrecision(2)	// "99"
+			num.toPrecision(3)	// "99.0"
+	String
+		字符串数量
+			var n = "abc".length	// 3
+		字符方法
+			var str = "hello world";
+			str.charAt(1);		// "e"，返回字符
+			str[1];			// "e"，返回字符，IE8+
+			str.charCodeAt(1);	// 101，返回字符编码
+		字符串方法
+			var str = "hello ";
+			var result = str.concat("world", "!");	// "hello world!"，字符串拼接
+			var string = "0123456789";
+			string.slice(3)		// "3456789"	下标
+			string.slice(-3)	// "789"	length-3
+			string.slice(3, 7)	// "3456"	下标，下标
+			string.slice(3, -4)	// "345"	下标，length-4
+
+			string.substring(3)	// "3456789"	下标
+			string.substring(-3)	// "0123456789"	0
+			string.substring(3, 7)  // "3456"       下标，下标
+			string.substring(3, -4)	// "012"	下标，0(0, 3)
+
+			string.substr(3)	// "3456789"	下标
+			string.substr(-3)	// "789"	length-3
+			string.substr(3, 7)     // "3456789"    下标，位数
+			string.substr(3, -4)	// ""		下标，0
+
 
 引用类型
 	Object类型
