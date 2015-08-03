@@ -477,7 +477,28 @@ Function函数
 			fromCharCode()将字符编码转换为字符串
 				String.fromCharCode(104, 101, 108, 108, 111)	// "hello"
 
-
+	Math类
+		求最值
+			Math.max(3, 54, 32, 16)		// 54
+			Math.min(3, 54, 32, 16)		// 3
+			var val = [1, 2, 3, 4, 5, 6, 7, 8];
+			Math.max.apply(Math, val)	// 8
+		舍入方法
+			Math.ceil()	// 向上舍入到整数
+			Math.floor()	// 向下舍入到整数
+			Math.round()	// 四舍五入到整数
+		随机数
+			random()	// 生成一个大于等于0，小于1的随机数
+			Math.floor(Math.random() * 可能值的最大数 + 第一个可能的值)
+			function selectFrom(lowerValue, upperValue){
+				var choices = upperValue - lowerValue + 1;
+				return Math.floor(Math.random() * choices + lowerValue);
+			}
+			selectFrom(2, 10)	// 随机生成一个2到10之间的数，包括2和10
+			var colors = ["red", "green", "blue", "yellow", "black", "purple", "brown"];
+			colors[selectFrom(0, colors.length-1)]		// 随机一个颜色
+		绝对值
+			Math.abs(num)		// 绝对值，number
 
 
 
