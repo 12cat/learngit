@@ -654,4 +654,138 @@ Function函数
 				非全局模式每次都重新匹配
 				全局模式继续上一次匹配下标开始重新匹配，到终点返回一次null
 			正则表达式的valueOf()方法返回正则表达式本身
+ ### 面向对象 ###
+	属性类型
+		数据属性
+			Configurable	删除，修改特性，修改为访问属性（不可逆）
+			Enumerable	for-in循环（不可逆）
+			Writable	修改属性值
+			Value		包含属性值
+			修改属性，Object.defineProperty()
+				ECMAScript5
+				var person = {};
+				Object.defineProperty(person, "name", {
+					writable: false,
+					value: "Nicholas"
+				});
+				person.name		// "Nicholas"
+				person.name = "Greg";
+				person.name		// "Nicholas"
+		访问属性
+			ECMAScript5
+			IE9+，Firefox4+，Safari5+，Opera12+，Chrome
+			Configurable	删除，修改特性，修改为数据属性
+			Enumerable	for-in循环
+			Get		读取，默认undefined
+			Set		写入，默认undefined
+			定义访问器属性
+				var book = {
+					_year: 2004,	// 通过对象访问的属性
+					edition: 1
+				};
+				Object.defineProperty(book, "year", {
+					get: function(){
+						return this._year;
+					},
+					set: function(newVale){
+						if(newValue > 2004){
+							this._year = newValue;
+							this.edition += newValue - 2004;
+						}
+					}
+				});
+				book.year = 2005;
+				book.edition		// 2
+
+				var book = {};
+				Object.defineProperties(book, {
+					_year: {
+						value: 2004
+					},
+					edition: {
+						value: 1
+					},
+					year: {
+						get: function(){
+							return this._year;
+						},
+						set: function(newValue){
+							if(newValue > 2004){
+								this._year = newValue;
+								this.edition += newValue - 2004;
+							}
+						}
+					}
+				});
+		读取属性的特性
+			ECMAScript5
+			接上面代码⬆️
+			IE9+，Firefox4+，Safari5+，Opera12+，Chrome
+			var des = Object.getOwnPropertyDescriptor(book, "_year");
+			des.value		// 2004
+			des.configurable	// false
+			typeof des.get		// "undefined"
+			var des = Object.getOwnPropertyDescriptor(book, "year");
+			des.value		// "undefined"
+			des.enumerable		// false
+			typeof des.get		// "function"
+	创建对象
+		构造函数的属性
+			person1 constructor == Person
+			person1 instanceof Person
+		工厂模式
+			function createPerson(name, age, job){
+				var o = new Object();
+				o.name = name;
+				o.age = age;
+				o.job = job;
+				o.sayName = function(){
+					alert(this.name);
+				};
+				return o;
+			}
+			var person1 = createPerson("Nicholas", 29, "Software Engineer");
+			var person2 = createPerson("Greg", 27, "Doctor");
+		构造函数模式
+			function Person(name, age, job){
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				this.sayName = function(){
+					alert(this.name);
+				};
+			}
+			var person1 = new Person("Nicholas", 29, "Software Engineer");
+			var person2 = new Person("Greg", 27, "Doctor");
+			person1 constructor == Person	// true
+			person1 instanceof Object	// true
+			person1 instanceof Person	// true
+
+			function Person(name, age, job){
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				this.sayName = sayName;
+			}
+			function sayName(){
+				alert(this.name);
+			}
+			var person1 = new Person("Nicholas", 29, "Software Engineer");
+			var person2 = new Person("Greg", 27, "Doctor");
+		原型模式
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
