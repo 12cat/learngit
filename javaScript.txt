@@ -418,6 +418,70 @@ Function函数
 			string.substr(-3)	// "789"	length-3
 			string.substr(3, 7)     // "3456789"    下标，位数
 			string.substr(3, -4)	// ""		下标，0
+		字符串位置方法
+			var str = "hello world";
+			indexOf("o")		// 4	查询字符
+			indexOf("o", 6)		// 7	查询字符，下标
+			lastIndexOf("o")	// 7	查询字符
+			lastIndexOf("o", 6)	// 4	查询字符，下标
+		trim()去掉前后空格
+			ECMAScript5
+			IE9+,Firefox3.5+,Safari5+,Opera10.5+,Chrome
+		字符串大小写转换
+			toLowerCase()		// 转换为小写
+			toLocaleLowerCase()	// 转换为小写，针对特定地区
+			toUpperCase()		// 转换为大写
+			toLocaleUpperCase()	// 转换为大写，针对特定地区
+		字符串模式匹配
+			match()获取指定字符串的数组
+				var text = "cat, bat, sat, fat";
+				var pattern = /.at/;	// /.at/g
+				text.match()		// [""]
+				text.match(pattern)	// ["cat"]	正则表达式或RegExp对象
+			search()获取字符串位置
+				var text = "cat, bat, sat, fat";
+				text.search()		// 0
+				text.search(/at/)	// 1，没有-1	正则表达式活RegExp对象
+			replace()字符串替换
+				var text = "cat, bat, fat";
+				text.replace("at", "ond")	// "cond, bat, fat"	正则或字符串，替换项
+				text.replace(/at/, "ond")	// "cond, bat, fat"
+				text.replace(/at/g, "ond")	// "cond, bond, fond"
+
+				text.replace(/(.at)/g, "word($1)")	// "word(cat), word(bat), word(fat)"
+
+				var t = "<p class=\"greeting\">Hello world!</p>";
+				t.replace(/[<>"&]/g, function(match, pos, originalText){
+					switch(match){		// 匹配项，匹配项下标，字符串
+						case "<":
+							return "&lt;";
+						case ">":
+							return "&gt;";
+						case "&":
+							return "&amp";
+						case "\"":
+							return "quot;";
+					}
+				});	// "&lt;p class=&quot;greeting&quot;&gt;Hello world!&lt;/p&gt;"
+			split()字符串拆分
+				正则因浏览器而不同
+				var text = "cat,bat,sat,fat";
+				text.split()		// ["cat,bat,sat,fat"]
+				text.split(",")		// ["cat", "bat", "sat", "fat"]	正则或字符串
+				text.split(/\,/, 2)	// ["cat", "bat"]		正则或字符串，数组长度
+			localeCompare()字符串排位比较
+				var str = "yellow";
+				str.localeCompare("brick")	// 1
+				str.localeCompare("yellow")	// 0
+				str.localeCompare("zoo")	// -1
+			fromCharCode()将字符编码转换为字符串
+				String.fromCharCode(104, 101, 108, 108, 111)	// "hello"
+
+
+
+
+
+
 
 
 引用类型
