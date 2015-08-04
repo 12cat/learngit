@@ -832,8 +832,92 @@ Function函数
 				enumerable: false,
 				value: Person
 			});
+		组合用法
+			function Person(name, age, job){
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				this.arr = ["Shelby", "Court"];
+			}
+			Person.prototype = {
+				constructor: Person,
+				sayName: function(){
+					alert(this.name);
+				}
+			}
+			var person1 = new Person("Nicholas", 28, "Software Engineer");
+			var person2 = new Person("Greg", 27, "Doctor");
+			person1.arr.push("Van");
+			person1.arr	// ["Shelby", "count", "van"]
+			person2.arr	// ["Shelby", "count"]
+			person1.arr === person2.arr		// false
+			person1.sayName === person2.sayName	// true
+		动态原型模式
+			function Person(name, age, job){
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				if(typeof this.sayName != "function"){
+					Person.prototype.sayName = function(){
+						alert(this.name);
+					};
+				}
+			}
+			var friend = new Person("Nicholas", 29, "Software Engineer");
+			friend.sayName();
+		寄生构造函数模式
+			function Person(name, age, job){
+				var o = new Object();
+				o.name = name;
+				o.age = age;
+				o.job = job;
+				o.sayName = function(){
+					alert(this.name);
+				};
+				return o;
+			}
+			var friedn = new Person("Nicholas", 29, "Software Engineer");
+			friend.sayName();	// "Nicholas"
+		稳妥构造函数模式
+			除了使用sayName()方法之外，没有其他方法访问name的值
+			function Person(name, age, job){
+				var o = new Object();
+				// 可以定义私有变量和函数
+				o.sayName = functio(){
+					alert(name);
+				};
+				return o;
+			}
+			var friend = Person("Nicholas", 29, "Software Engineer");
+			friend.sayName();	// "Nicholas"
+	继承
+		原型链
+			function Super(){
+				this.property = true;
+			}
+			Super.prototype.getSuperValue = function(){
+				return this.property;
+			}
+			function Sub(){
+				this.subproperty = false;
+			}
+			// 继承
+			Sub.prototype = new Super();
+			Sub.prototype.getSubValue = function(){
+				return this.subproperty;
+			}
 
+			var instance = new Sub();
+			instance.getSuperValue();	// true
+		确定原型和实例的关系
+			原型链中出现过的原型
+			instance instanceof Object	// true
+			instance instanceof Super	// true
+			instance instanceof Sub		// true
 
+			Object.prototype.isPrototypeOf(instance)	// true
+			Super.prototype.isPrototypeOf(instance)		// true
+			Sub.prototype.isPrototypeOf(instance)		// true
 
 
 
