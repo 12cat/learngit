@@ -993,7 +993,119 @@ Function函数
 			};
 			var z1 = new ("z1", 12);
 			var z2 = new ("z2", 24);
-
-
-
-
+函数表达式
+	匿名函数
+		匿名函数返回值
+			function fun(){
+				return function(){
+					return function(){
+						console.log("12cat");
+					}
+				}
+			}
+			fun()()()	// 12cat
+		递归
+			function factorial(num){
+				if(num <= 1){
+					return 1;
+				} else {
+					return num * arguments.callee(num-1);
+				}
+			}
+			var factorial = function f(num){
+				if(num <= 1){
+					return 1;
+				} else {
+					return num * f(num-1);
+				}
+			};
+	闭包
+		实例
+			function fun(name){
+				return function(){
+					console.log(name);
+				}
+			}
+			var s = fun("12cat");
+			s()	// 12cat
+		闭包与变量
+			function fun1(){
+				var result = new Array();
+				for(var i=0; i<10; i++){
+					result[i] = function(){
+						return i;
+					};
+				}
+				return result;
+			}
+			function fun2(){
+				var result = new Array();
+				for(var i=0; i<10; i++){
+					result[i] = function(num){
+						return function(){
+							return num;
+						}
+					}(i);	// 传参i
+				}
+				return result;
+			}
+			fun1()		// i返回值都是10
+			fun2()		// i返回值递增
+		关于this
+			var name = "The Window";
+			var object1 = {
+				name: "my Object",
+				getNameFun: function(){
+					return function(){
+						return this.name;
+					};
+				}
+			};
+			var object2 = {
+				name: "My Object",
+				getNameFun: function(){
+					var that = this;
+					return function(){
+						return that.name;
+					};
+				}
+			};
+			object1.getNameFun()()		// "The Window"（非严格模式）
+			ovject2.getNameFun()()		// "My Object"
+			var object3 = {
+				name: "My Object",
+				getName: function(){
+					return this.name;
+				}
+			};
+			object.getName()			// "My Object"
+			(object.getName)()			// "My Object"
+			(object.getName = object.getName)()	// "The Window"，非严格模式下
+			// ⬆️ 复制表达式的值是函数本身，改变了this的值
+		内存泄露
+			// element不会被释放
+			function fun1(){
+				var element = document.getElementById("id");
+				element.onclick = function(){
+					alert(element.id);
+				};
+			}
+			// 解法
+			function fun2(){
+				var element = document.getElementById("id");
+				var id = element.id;	// 去掉闭包引用
+				element.onclick = function(){
+					alert(id);
+				};
+				element = null;		// 去掉包含函数的活动对象的引用
+			}
+		模仿块级作用域
+			(function(){
+				var now = new Date();
+				if(now.getMonth() == 0 && now.getDate() == 1){
+					alert("Happy new year!");
+				}
+			})();
+			now		// notfound
+	私有变量
+		
