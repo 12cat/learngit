@@ -918,9 +918,81 @@ Function函数
 			Object.prototype.isPrototypeOf(instance)	// true
 			Super.prototype.isPrototypeOf(instance)		// true
 			Sub.prototype.isPrototypeOf(instance)		// true
-
-
-
+		借用构造函数
+			function SuperType(){
+				this.colors = ["red", "blue", "green"];
+			}
+			funcition SbuType(){
+				SuperType.call(this);	// 继承了SuperType
+			}
+			var instance1 = new SubType();
+			instance1.colors.push("black");
+			var instance2 = new SubType();
+			instance1.colors	// ["red", "blue", "green", "black"]
+			instance2.colors	// ["red", "blue", "green"]
+		组合继承
+			function Super(name){
+				this.name = name;
+				this.colors = ["red", "blue"];
+			}
+			Super.prototype.sayName = function(){
+				alert(this.name);
+			};
+			function Sub(name, age){
+				Super.call(this, name);
+				this.age = age;
+			}
+			Sub.prototype = new Super();
+			Sub.prototype.constructor = Sub;
+			Sub.prototype.sayAge = function(){
+				alert(this.age);
+			};
+			var sub1 = new Sub("Nicholas", 29);
+			var sub2 = new Sub("Greg", 27);
+			sub1.colors.push("black");
+			sub1.colors		// ["red", "blue", "black"]
+			sub2.colors		// ["red", "blue"]
+			sub1.sayName()		// "Nicholas"
+			sub2.sayName()		// "Greg"
+			sub1.sayAge()		// 29
+			sub2.sayAge()		// 27
+		原型是继承，对象的浅层复制
+			var person = {
+				name: "Nicholas",
+				friends: ["Shelby", "Court", "Van"]
+			};
+			var person1 = Object(person);
+			person1.name = "Greg";
+			person1.friend.push("Rob");
+			var person2 = Object(person);
+			person2.name = "Linda";
+			person2.friends.push("Barbie");
+			person.friends		// ["Shelby", "Court", "Van", "Rob", "Barbie"]
+			person1.friends		// ["Shelby", "Court", "Van", "Rob", "Barbie"]
+			person2.friends		// ["Shelby", "Court", "Van", "Rob", "Barbie"]
+		寄生组合式继承
+			function inheritPrototype(sub, super){
+				var prototype = Object(super.prototype);	// 创建对象
+				prototype.constructor = sub;			// 增强对象
+				sub.prototype = prototype;			// 指定对象
+			}
+			function Super(name){
+				this.name = name;
+				this.colors = ["red", "blue"];
+			}
+			Super.prototype.sayName = function(){
+				alert(this.name);
+			};
+			function Sub(name, age){
+				Super.call(this, name);
+				this.age = age;
+			}
+			inheritPrototype(Sub, Super);
+			Sub.prototype.sayAge = function(){
+				alert(this.age);
+			};
+			var z1 = new ("z1", 12);
+			var z2 = new ("z2", 24);
 
 
 
