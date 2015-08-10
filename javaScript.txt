@@ -1164,4 +1164,113 @@ Function函数
 					}
 				};
 			}();
+		增强模块模式
+			var singleton = function(){
+				// 私有变量和私有函数
+				var private = 10;
+				runction privateFun(){
+					return false;
+				}
+				// 创建对象
+				var obj = new Person();
+				// 添加特权，公有属性和方法
+				obj.public = true;
+				obj.publicFun = function(){
+					cnsole.log(private++);
+					return priavateFun();
+				};
+				// 返回对象
+				return obj;
+			}();
+BOM，window对象
+		窗口位置
+			// 窗口左边位置
+			var leftPos = (typeof window.screenLeft === "number") ?
+					window.screenLeft : window.screenX;
+			// 窗口上边位置
+			var topPos = (typeof window.screenTop === "number") ?
+					window.screenTop : window.screenY;
+		窗口位移
+			方法不适用于框架，只能最外层window对象使用
+			// 窗口移动到（200， 300），左上角0，0
+			window.moveTo(0, 0)
+			// 窗口向下移动100像素
+			window.moveBy(0, 100)
+		窗口大小
+			方法不适用于框架，只能最外层window对象使用
+			// 100*100
+			window.resizeTo(100, 100)
+			// 200*150
+			window.resizeBy(100, 50)
+		打开窗口
+			var wroxWin = window.open("http://www.wrox.com/", "wroxWindow",
+					"height=400,width=400,top=10,left=10,resizable=yes");
+			wroxWin.opener == window	// true
+		关闭窗口
+			wroxWin.close()
+			wroxWin.closed		// true
+			window.close()
+			top.close()
+		检测弹出窗口是否被屏蔽
+			var blocked = false;
+			try {
+				var wroxWin = window.open("http://www.baidu.com", "_blank");
+				if(wroxWin == null){
+					blocked = true;
+				}
+			} catch (ex){
+				blocked = true;
+			}
+			if(blocked){
+				alert("The popup was blocked!");
+			}
+		间歇调用和超时调用
+			setTimeout
+				// 不建议传递字符串
+				var timeoutId = setTimeout("alert('Hello world!')", 1000);
+				// 推荐调用方式
+				var tiemoutId = setTimeout(function(){
+					alert("Hello world!");
+				}, 1000);
+				// 销毁
+				clearTimeout(timeoutId);
+				// 循环实例
+				var num = 0;
+				function fun(){
+					num++;
+					if(num < max){
+						setTimeout(fun, 500);
+					} else {
+						console.log("Done");
+					}
+				}
+				setTimeout(fun, 500);
+			setInterval
+				// 不建议传递字符串
+				var intervalId = setInterval("alert('Hello world!)", 1000);
+				// 推荐调用方式
+				var intervalId = setInterval(function(){
+					alert("hello world!);
+				}, 1000);
+				// 实例
+				var num = 0;
+				var intervalId = null;
+				function fun(){
+					num++;
+					if(num == 10){
+						clearInterval(intervalId);
+						console.log("Done");
+					}
+				}
+				intervalId = setInterval(fun, 500);
+		系统对话
+			弹出框
+				// 弹出警告内容
+				alert("Hello")	// nudefined
+				// 弹出选择框，取消或确定
+				confirm()	// true，false
+				// 弹出输入框，输入后取消或确定
+				prompt()	// null，输入内容
+	location对象
+			window.location === document.location	// true
 
