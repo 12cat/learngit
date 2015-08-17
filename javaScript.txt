@@ -1274,3 +1274,66 @@ BOM，window对象
 	location对象
 			window.location === document.location	// true
 
+DOM
+	节点层次
+		node
+			doc.nodeType == 1	// 测试是否是节点元素
+			doc.nodeName		// "H1"
+			doc.nodeValue		// null
+		document
+			document.nodeType	// 9
+			document.nodeName	// "#document"
+			document.nodeValue	// null
+			document.parentNode	// null
+			document.ownerDocument	// null
+
+			var html = document.documentElement;	// <html>
+			html === document.childNodes[0]		// true
+			html === documnet.firstChild		// true
+			var body = document.body		// <body>
+			var title = document.title		// 获取标题文档
+			document.title = "blog"			// 设置标题文档
+			var url = document.URL			// 获取完整的URL
+			var domain = document.domain		// 获取域名
+			var referrer = document.referrer	// 获取来源页面的URL
+
+			var div = document.getElementById("myId");
+			var _div = document.getElementsByTagName("div");
+			_div.length
+			_div[0].id
+			_div.item(0).id
+		element
+			element.nodeType	// 1，元素节点
+			element.nodeName	// "div"
+			element.nodeValue	// null
+			element.parentNode	// document或element
+
+			var div = document.getElementById("div");
+			div.tagName == div.nodeName	// "DIV"
+			div.id
+			div.className
+			div.id = "newId"
+			div.className = "newClass"
+			div.getAttribute("id")		// 获取属性值
+			div.setAttribute"id", "newId"()	// 设置属性值
+			div.removeAttribute("id")	// 删除属性值
+
+			var div = document.createElement("div")		// 创建元素
+			div.id = "myDiv";
+			div.className = "box";
+			document.body.appendChild(div);			// 添加到body最后
+		Text
+			nodeType	// 3
+			nodeName	// "#text"
+			nodeValue	// 包含文本
+			parentNode	// 一个Element
+
+			var textNode = document.createTextNode("<strong>Hello</strong> world!");
+			var element = document.createElement("div");
+			element.className = "message";
+			element.appendChild(textNode);
+			document.body.appendChild(element);
+			element.childNodes.length	// 获取文本节点数量
+			element.firstChild.nodeValue	// 获取文本节点内容
+			element.normalize()		// 合并文本节点
+			var newNode = element.firstChild.splitText(5)	// 分割文本节点并返回
