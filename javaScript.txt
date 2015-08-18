@@ -1337,3 +1337,79 @@ DOM
 			element.firstChild.nodeValue	// 获取文本节点内容
 			element.normalize()		// 合并文本节点
 			var newNode = element.firstChild.splitText(5)	// 分割文本节点并返回
+		DocumentFragment文档片段
+			减少渲染次数
+			<ul id="myList"></ul>
+			var fragment = document.createDocumentFragment();
+			var ul = document.getElementById("myList");
+			var li = null;
+			for (var i=0; i<3; i++){
+				li = document.createElement("li");
+				li.appendChild(document.createTextNode("Item "+(i+1)));
+				fragment.appendChild(li);
+			}
+			ul.appendChild(fragment);
+		Attr特性
+			nodeType	// 2
+			nodeName	// 名称
+			ndoeValue	// 值
+			parentNode	// null
+		Attribute
+			var attr = document.createAttribute("align");
+			attr.value = "left";
+			element.setAttributeNode(attr);
+			element.attributes["align"].value		// "left"
+			element.getAttributeNode("align").value		// "left"
+			element.getAttribute("align")			// "left"
+			element.removeAttribute("align")		// 删除
+	DOM操作技术
+		动态脚本
+			function loadScript(url){
+				var script = document.createElement("script");
+				script.type = "text/javascript";
+				script.src = url;
+				document.body.appendChild(script);
+			}
+		动态样式
+			function loadStyles(url){
+				var link = document.createElement("link");
+				link.rel = "stylesheet";
+				link.type = "text/css";
+				link.href = url;
+				var head = document.getElementsByTagName("head")[0];
+				head.appendChild(link);
+			}
+		操作表格
+			<table border="1" width="100%">
+				<tbody>
+					<tr>
+						<td>Cell 1,1</td>
+						<td>Cell 2,1</td>
+					</tr>
+					<tr>
+						<td>Cell 1,2</td>
+						<td>Cell 2,2</td>
+					</tr>
+				</tbody>
+			</table>
+			// 创建tbale
+			var table = document.createElement("table");
+			table.border = 1;
+			table.width = "100%";
+			// 创建tbody
+			var tbody = document.createElement("tbody");
+			table.appendChild(tbody);
+			// 创建第一行
+			tbody.insertRow(0);
+			tbody.rows[0].insertCell(0);
+			tbody.rows[0].cells[0].appendChild(document.createTextNode("Cell 1,1"));
+			tbody.rows[0].insertCell(1);
+			tbody.rows[0].cells[1].appendChild(document.createTextNode("Cell 2,1"));
+			// 创建第二行
+			tbody.insertRow(1);
+			tbody.rows[1].insertCell(0);
+			tbody.rows[1].cells[0].appendChild(document.createTextNode("Cell 1,2"));
+			tbody.rows[1].insertCell(1);
+			tbody.rows[1].cells[1].appendChild(document.createTextNode("Cell 2,2"));
+			// 将表格添加导文档主体中
+			document.body.appendChild(table);
