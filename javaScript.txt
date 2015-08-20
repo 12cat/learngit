@@ -10,7 +10,7 @@
 		String
 		Object
 	typeof检测变量的数据类型
-		typeof 2323s === "number"		// true
+		typeof 2323 === "number"		// true
 		typeof NaN === "number"			// true
 		typeof "abc" === "string"		// true
 		typeof nudefined === "undefined"	// true
