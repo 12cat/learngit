@@ -1,0 +1,105 @@
+安装
+	安装xcode
+		>> xcode-select -p
+		>> xcode-select --install
+	安装python
+		>> python -v
+	安装ruby
+		>> ruby -v
+		网址：brew.sh
+		Install Homebrew
+		>> ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	安装node
+		>> brew install node
+		>> node -v
+		npm install -g n	//切换版本
+		n+上下键切换版本
+	安装mongodb
+		>> brew install git mongodb
+
+HTTP
+	chrome://net-internals/#dns
+
+node API
+	URL
+		bogon:~ zhou$ node
+		> url
+		{ parse: [Function: urlParse],
+		  resolve: [Function: urlResolve],
+		  resolveObject: [Function: urlResolveObject],
+		  format: [Function: urlFormat],
+		  Url: [Function: Url] }
+		>
+
+		url.resolve('http://imooc.com/', '/course/list');
+		// 'http://imooc.com/course/list'
+
+		> url.parse('http://imooc.com:8080/list?from=scott&coures=node#floor1')
+		{ protocol: 'http:',
+		  slashes: true,
+		  auth: null,
+		  host: 'imooc.com:8080',
+		  port: '8080',
+		  hostname: 'imooc.com',
+		  hash: '#floor1',
+		  search: '?from=scott&coures=node',
+		  query: 'from=scott&coures=node',
+		  pathname: '/list',
+		  path: '/list?from=scott&coures=node',
+		  href: 'http://imooc.com:8080/list?from=scott&coures=node#floor1' }
+		> 
+
+		> url.parse('http://imooc.com:8080/list?from=scott&coures=node#floor1', true)
+		{ protocol: 'http:',
+		  slashes: true,
+		  auth: null,
+		  host: 'imooc.com:8080',
+		  port: '8080',
+		  hostname: 'imooc.com',
+		  hash: '#floor1',
+		  search: '?from=scott&coures=node',
+		  query: { from: 'scott', coures: 'node' },
+		  pathname: '/list',
+		  path: '/list?from=scott&coures=node',
+		  href: 'http://imooc.com:8080/list?from=scott&coures=node#floor1' }
+		>
+
+		> url.parse('//imooc.com:8080/list?from=scott&coures=node#floor1', true, true)
+		{ protocol: null,
+		  slashes: true,
+		  auth: null,
+		  host: 'imooc.com:8080',
+		  port: '8080',
+		  hostname: 'imooc.com',
+		  hash: '#floor1',
+		  search: '?from=scott&coures=node',
+		  query: { from: 'scott', coures: 'node' },
+		  pathname: '/list',
+		  path: '/list?from=scott&coures=node',
+		  href: '//imooc.com:8080/list?from=scott&coures=node#floor1' }
+		>
+		 
+	querystring
+		var demo = {name:'scott', course:[1,2], from''};
+		querystring.stringify(demo);
+		// 'name=scott&course=1&course=2&from='
+		querystring.stringify(demo, ',');
+		// 'name=scott,course=1,course=2,from='
+		querystring.stringify(demo, ',', ':');
+		// 'name:scott,course:1,course:2,from:'
+
+		querystring.parse('name=scott&course=1&course=2&from=');
+		// {name:'scott', course:[1,2], from''}
+		querystring.parse('name=scott,course=1,course=2,from=', ',');
+		// {name:'scott', course:[1,2], from''}
+		querystring.parse('name:scott,course:1,course:2,from:', ',', ':');
+		// {name:'scott', course:[1,2], from''}
+		querystring.parse('name:scott,course:1,course:2,from:', ',', ':', 1000);
+		// 参数1的长度
+
+		querystring.escape('<哈哈>')
+		// '%3C%E5%93%88%E5%93%88%3E' 转义
+		querystring.unescape('%3C%E5%93%88%E5%93%88%3E');
+		// '<哈哈>' 反转义
+
+
