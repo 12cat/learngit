@@ -1,6 +1,5 @@
 ### 子级窗口调用父级窗口window属性
 > 父级窗口
-
 ``` js
     window.child_data = {
                             'name': '12cat',
