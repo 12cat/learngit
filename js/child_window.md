@@ -1,6 +1,8 @@
-[TOC]
+<ul>
+    <li><a href="#1">子级窗口调用父级窗口window属性</a></li>
+</ul>
 
-### 子级窗口调用父级窗口window属性
+<h3 id="1">子级窗口调用父级窗口window属性</h3>
 > 父级窗口
 ``` js
     window.child_data = {
