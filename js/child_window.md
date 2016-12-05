@@ -8,7 +8,6 @@
     window.open('/child.html', '', 'height=740, width=410');
 ```
 > 子级窗口
-
 ``` javaScript
     var data = window.opener.child_data;
 ```
